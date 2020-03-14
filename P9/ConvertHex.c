@@ -1,23 +1,27 @@
 #include <stdio.h>
+#include <stdbool.h>
 #include <float.h>
 #include <string.h>
 #include <math.h>
 #include<stdlib.h>
 
-int asciiHEXToInt(char *s);
+
+void asciiHEXToInt(char *s);
 int hexCharValue(char c);
+
+
 
 int main(){
     char hex[33];
     while(1==1){
         printf ("Enter a hexadecimal number.\n");
         scanf("%s", hex);
-        printf("Hexadecimal number has the decimal value of %d \n \n", asciiHEXToInt(hex));
-
+        asciiHEXToInt(hex);
     }
 }
 
-int asciiHEXToInt(char *s){
+void asciiHEXToInt(char *s){
+    bool valid = true;
     int res = 0;
     for(int i=0; i<strlen(s); i++){
         long unsigned int exp = strlen(s)-i-1;
@@ -25,11 +29,14 @@ int asciiHEXToInt(char *s){
              res = res + pow(16,exp) * hexCharValue(s[i]);
         }
        else{
-           printf("Error: Invalid number \n");
-           return res;
+           printf("Error: Invalid number \n \n");
+           valid = false;
+           return;
        }
     }
-    return res;
+    if(valid){
+        printf("Hexadecimal number has the decimal value of %d \n \n", res);
+    }
 }
 
 int hexCharValue(char c){
