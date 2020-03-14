@@ -5,11 +5,8 @@
 #include <math.h>
 #include<stdlib.h>
 
-
 void asciiHEXToInt(char *s);
 int hexCharValue(char c);
-
-
 
 int main(){
     char hex[33];
